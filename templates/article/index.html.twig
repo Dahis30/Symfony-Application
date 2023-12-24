@@ -17,7 +17,18 @@
         {% block body %}
         
         <div>
-        <h2>Titre de l'article </h2>
+        {% for article in articles %}
+        <article style = " border :2px black solid ; margin:70px; padding :30px; ">
+        <h2>Titre de l'article {{article.title}} </h2>
+        <div>Ecrit dans le {{article.createdAt | date('d/m/y')}} a {{ article.createdAt | date('H:i') }}</div>
+        <div>
+        <img src="https://img.freepik.com/photos-gratuite/couple-plein-coup-regardant-lune_23-2150385850.jpg?size=626&ext=jpg&ga=GA1.1.749179356.1703366091" >
+        <p>   {{article.content}}</p>
+        <a href="{{path(('blog_show'),{ 'id': article.id }) }}" >Lire la suite ...</a>
+
+        </div>
+        </article>
+        {% endfor %}
 
 
         </div>
